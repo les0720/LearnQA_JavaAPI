@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 public class HelloJonnparsing {
     @Test
-    public void testRestAssured(){
-        Map<String,String> params = new HashMap<>();
-        params.put("name","Jonn");
+    public void testRestAssured() {
+        Map<String, String> params = new HashMap<>();
+        params.put("name", "Jonn");
 
         JsonPath response = RestAssured
                 .given()
                 .queryParams(params)
-                .get( "https://playground.learnqa.ru/api/hello")
+                .get("https://playground.learnqa.ru/api/hello")
                 .jsonPath();
 
         String answer = response.get("answer");
