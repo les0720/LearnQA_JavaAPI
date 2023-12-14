@@ -33,6 +33,7 @@ public class Ex7longredirect {
         }
             while (true) ;
             System.out.println("finalUrl: " + finalUrl);
+        System.out.println("count: "+ count);
 
 
     }
