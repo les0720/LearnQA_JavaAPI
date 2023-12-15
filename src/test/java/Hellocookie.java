@@ -9,8 +9,8 @@ public class Hellocookie {
     @Test
     public void testRestAssured() {
         Map<String, String> data = new HashMap<>();
-        data.put("login", "secret_login");
-        data.put("password", "secret_pass");
+        data.put("login2", "secret_login");
+        data.put("password2", "secret_pass");
 
         Response response = RestAssured
                 .given()
