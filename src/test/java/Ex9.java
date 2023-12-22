@@ -14,7 +14,7 @@ public class Ex9 {
     public void testRestAssured() {
 
         String Url = "https://playground.learnqa.ru/ajax/api/get_secret_password_homework";
-        String Urlcheck = "https://playground.learnqa.ru/ajax/api/check_auth_cookie";
+        String UrlCheck = "https://playground.learnqa.ru/ajax/api/check_auth_cookie";
         String login = "super_admin";
         List ListPass = new ArrayList();
         ListPass.add("password");
@@ -244,11 +244,11 @@ public class Ex9 {
         ListPass.add("123qwe");
 
         for (int i = 0; i <= ListPass.size() - 1; i++) {
-            String pass = (String) ListPass.get(i);
+            String password = (String) ListPass.get(i);
             Map<String, String> data = new HashMap<>();
             data.put("login", login);
-            data.put("password", pass);
-            Response testLoginPair = RestAssured  //Получаем куки для пар
+            data.put("password", password);
+            Response testLoginPair = RestAssured  //Получить cookie для пары
                     .given()
                     .body(data)
                     .when()
@@ -260,18 +260,18 @@ public class Ex9 {
             cookies.put("auth_cookie", responseCookie);
 
 
-            Response checkCookie = RestAssured //Проверяем куки
+            Response checkCookie = RestAssured //Проверка cookie
                     .given()
                     .body(data)
                     .cookies(cookies)
                     .when()
-                    .post(Urlcheck)
+                    .post(UrlCheck)
                     .andReturn();
             String status = checkCookie.getBody().asString();
 
 
             if ("You are authorized".equals(status)) {
-                System.out.println(status + " OK! " + pass);
+                System.out.println("Password: " + password + ". "+ status);
                 break;
             }
 
