@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Parametrized {
     @Test
-    public void testHelloMethodWithoutName () {
+    public void testHelloMethodWithoutName1 () {
         JsonPath response = RestAssured
                 .get("https://playground.learnqa.ru/api/hello")
                 .jsonPath();
@@ -18,7 +18,7 @@ public class Parametrized {
     }
 
     @Test
-    public void testHelloMethodWithName () {
+    public void testHelloMethodWithName2 () {
         String name = "Username";
 
         JsonPath response = RestAssured
