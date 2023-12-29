@@ -1,0 +1,24 @@
+package tests;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+public class HelloJonnparsing {
+    @Test
+    public void testRestAssured() {
+        Map<String, String> params = new HashMap<>();
+        params.put("name", "Jonn");
+
+        JsonPath response = RestAssured
+                .given()
+                .queryParams(params)
+                .get("https://playground.learnqa.ru/api/hello")
+                .jsonPath();
+
+        String name = response.get("answer2");
+        System.out.println(name);
+    }
+}
