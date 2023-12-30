@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
@@ -61,6 +59,8 @@ public class UserGetTest extends BaseTestCase {
     @Test // Авторизоваться под одним пользователем, но получить данные пользователя с другим ID. Должен получить только username.
     @Description("A test to get data from another user")
     @DisplayName("Make sure that the request receives only the username")
+    @Flaky
+    @Link("http://yandex.ru")
     public void TestGetUserDetailsAuthAsAnotherUser() {
         Map<String,String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");

@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
@@ -75,6 +73,7 @@ public class UserEditTest extends BaseTestCase {
     @Test //Пытаемся изменить данные пользователя, будучи неавторизованными
     @Description("Edit data user without authorization")
     @DisplayName("Test negative edit data user without authorization")
+    @Owner("les0720")
     public void testEditWithOutAuth(){
 
         //GENERATE USER
@@ -110,6 +109,8 @@ public class UserEditTest extends BaseTestCase {
     @Test// Попытаемся изменить данные пользователя, будучи авторизованными другим пользователем
     @Description("Edit user's data while being authorized by another user")
     @DisplayName("Test edit another user's data")
+    @Flaky
+    @Issue("FGY-1111")
     public void testEditAnotherUser(){
         //GENERATE USER 1
         Map<String,String> userData1 = DataGenerator.getRegistrationData();
