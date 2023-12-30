@@ -74,7 +74,7 @@ public class UserGetTest extends BaseTestCase {
         String cookie = this.getCookie(responseGetAuth, "auth_sid");
 
         Response responseUserData = apiCoreRequests
-                .makeGetRequest("https://playground.learnqa.ru/api/user/1", header, cookie);
+                .makeGetRequest("https://playground.learnqa.ru/api/user/88645", header, cookie);
 
         Assertions.assertJsonHasField(responseUserData, "username");
         Assertions.assertJsonHasNotField(responseUserData, "firstName");

@@ -56,5 +56,36 @@ public class ApiCoreRequests {
                 .andReturn();
     }
 
+    @Step("Make a PUT-request Edit user with Auth")
+    public Response makePutEditWithAuthRequest(String url, Map<String,String> editData, String token, String cookie){
+        return given()
+                .filter(new AllureRestAssured())
+                .header(new Header("x-csrf-token", token))
+                .cookie("auth_sid", cookie)
+                .body(editData)
+                .put(url)
+                .andReturn();
+    }
+
+    @Step("Make a PUT-request Edit user")
+    public Response makePutEditWithOutAuthRequest(String url, Map<String,String> userData){
+        return given()
+                .filter(new AllureRestAssured())
+                .body(userData)
+                .put(url)
+                .andReturn();
+    }
+
+    @Step("Make a POST-request to edit user")
+    public Response makePostRequestEditUser(String url, String token, String cookie, Map<String, String> editData, String userId) {
+        return  given()
+                .filter(new AllureRestAssured())
+                .header("x-csrf-token", token )
+                .cookie("auth_sid", cookie)
+                .body(editData)
+                .put(url + userId)
+                .andReturn();
+    }
+
 }
 
