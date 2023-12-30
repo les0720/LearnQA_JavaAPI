@@ -14,13 +14,13 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("User register cases")
-@Feature("Register")
+@Epic("User get data")
+@Feature("GetUserDetails")
 
 public class UserGetTest extends BaseTestCase {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
-    @Test
+    @Test //Неавторизованный запрос на данные
     public void TestGetUserDataNotAuth() {
         Response responseUserData = RestAssured
                 .get("https://playground.learnqa.ru/api/user/2")
@@ -32,7 +32,7 @@ public class UserGetTest extends BaseTestCase {
         Assertions.assertJsonHasNotField(responseUserData, "email");
     }
 
-    @Test
+    @Test//Авторизованный запрос для получения данных того же пользователя
     @Description("A test to get data from the same user")
     @DisplayName("Authorization")
     public void TestGetUserDetailsAuthAsSameUser() {
